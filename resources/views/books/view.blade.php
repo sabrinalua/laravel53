@@ -7,7 +7,9 @@
 		<a class="btn btn-primary" href="/books/update/{{$book->id}}">Update</a>
 		<a class="btn btn-danger" href="#">Delete</a>
 		@endif
-		<a class="btn btn-success" href="#">Borrow</a>
+		@if($book->status == 'available')
+		<a class="btn btn-success" href="/books/borrow/{{$book->id}}">Borrow</a>
+		@endif
 		<table class="table table-stripped table-bordered">
 			<tbody>
 				<tr>
@@ -25,6 +27,14 @@
 				<tr>
 					<th>Status</th>
 					<td>{{$book->status}}</td>
+				</tr>
+				<tr>
+					<td>Description</td>
+					<td>{{$book->description}}</td>
+				</tr>
+				<tr>
+					<td>Location</td>
+					<td>{{$book->location}}</td>
 				</tr>
 
 			</tbody>

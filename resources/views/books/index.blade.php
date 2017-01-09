@@ -1,10 +1,23 @@
 @extends('layouts.app')
 @section('content')
 	<div class="container">
-
-		<div class="jumbotron">
-		<center><h1>Book List</h1></center>
-	</div>
+		<h5>Search</h5>
+		<div id="searchdiv">
+			<form action="#" method="POST">
+			{{ csrf_field() }}
+			<input type="text" name="title" placeholder="book title" class="form-control">
+			<input type="text" name="author" placeholder="author" class="form-control">
+			<input type="text" name="isbn" placeholder="isbn" class="form-control">
+			<select name="status" class="form-control">
+				<option value="">All</option>
+				<option value="borrowed">borrowed</option>
+				<option value="available">available</option>
+				<option value="lost">lost</option>
+			</select>
+				<button>submit</button>
+			</form>
+		</div>
+		</br>
 		<table class="table table-stripped table-bordered">
 			<tr>
 				<thead>
@@ -35,5 +48,4 @@
 		</table>
 		<center>{!! $model->links() !!}</center>
 	</div>
-
 @stop

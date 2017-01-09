@@ -10,8 +10,9 @@
                 <div class="panel-body">
                     You are logged in as a {{ Auth::user()-> type }}.
                     </br>
-                    You're {{$age}} this year ;>
+                    <!-- You're {{$age}} this year ;> -->
                     </br>
+                    You've borrowed {{$count}} book(s). <a href="/logs">View Logs</a>
                     
                 </div>
             </div>

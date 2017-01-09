@@ -24,7 +24,6 @@ class HomeController extends Controller
         $dob = new \DateTime($dob);
         $diff = $dt->diff($dob)->format('%y');
         return $diff;
-
     }
 
     /**
@@ -35,8 +34,10 @@ class HomeController extends Controller
     public function index()
     {  
         $dob =\Auth::user()->dob;
-        $diff = $this->checkAge($dob);        
-        return view('home', ['age'=>$diff]);
+        $diff = $this->checkAge($dob);
+        $log = \App\Log::where(['user_id'=>\Auth::user()->id])->get();
+        $count = $log->count();        
+        return view('home', ['age'=>$diff, 'count'=>$count]);
     }
 
     public function addBook(){

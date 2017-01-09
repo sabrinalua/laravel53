@@ -20,6 +20,7 @@ class CreateBookTable extends Migration
             $table->string('author');
             $table->string('location');
             $table->string('added_by');
+            $table->string('description')->nullable();
             $table->enum('status', ['available', 'borrowed', 'lost'])->default('available');
             $table->timestamps();
 

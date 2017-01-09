@@ -32,6 +32,7 @@ Route::get('/', function () {
 
 //list books
 Route::get('/books/list', 'BookController@index')->name('booklist'); 
+Route::post('/books/list', 'BookController@index')->name('booklist'); 
 //view book by ID
 Route::get('/books/view/{id}', 'BookController@view')->name('/viewbook');
 
@@ -58,7 +59,9 @@ Route::group(['middleware'=>'App\Http\Middleware\VeriMidware'], function(){
 
 		//
 	});	
-	Route::get('/books/borrow',function(){echo "hi";});
+	Route::get('/books/borrow/{id}','BookController@showBorrowForm');
+	Route::post('books/borrow', 'BookController@borrow');
+	
 	Route::get('/books/return', function(){});
 
 	Route::get('/logs', 'SiteController@logs');

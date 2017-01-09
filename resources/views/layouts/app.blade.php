@@ -78,7 +78,7 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="#">View History</a>
+                                        <a href="/logs">View History</a>
                                         <a href="/users/password">Change Password</a>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
