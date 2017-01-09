@@ -1,0 +1,1 @@
+<div id="copyright text-left"> Copyright 1234</div>
