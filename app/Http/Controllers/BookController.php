@@ -31,6 +31,8 @@ class BookController extends Controller
     	$model->author = $book['author_fn']." ".$book['author_ln' ];
     	$model->location = $book['location'];
         $model->added_by = $added_by;
+        $model->publisher = $book['publisher'];
+        $model->publish_year = $book['publish_year'];
         $model->description =$book['description'];
 
     	if($model->save()){
@@ -72,10 +74,21 @@ class BookController extends Controller
     	
     }
     public function showEditForm($id){
-    	echo "update ".$id;
+        $book = Books::find($id);
+        $sections = \App\Section::all();
+        return view('books.update', ['book'=>$book, 'section'=>$sections]);
     }
-    public function update(){
 
+    public function update(Request $r){
+        $up = $r['Book'];
+        $book = Books::find($up['id']);
+        
+        $book->description = $up['description'];
+        $book->location = $up['location'];
+        if($book->save()){
+            return \Redirect::route('/viewbook', ['id'=>$up['id']]);
+        }
+        // var_dump($up);
     }
 
     public function showBorrowForm($id){
@@ -86,17 +99,23 @@ class BookController extends Controller
         return view('books.borrow', ['book'=>$book, 'now'=>$now, 'return'=>$return]);
     }
     public function borrow(Request $request){
-        $log = $request['Log'];        
-        $model = new \App\Log();
-        $model->user_id = \Auth::user()->id;
-        $model->book_id = $log['book_id'];
-        $model->borrow_date =$log['borrow_date'];
-        $model->due_date =$log['due_date'];
-        if($model->save()){
-            $book = Books::find($log['book_id']);
-            $book->status ="borrowed";
-            if($book->save()){
-                return \Redirect::route('booklist');}
+        $a = 1;
+        if($a>=1){
+            $request->session()->flash('status', 'return your curent borrowed books first!');
+            return \Redirect::route('/home');
+        }else{
+            $log = $request['Log'];        
+            $model = new \App\Log();
+            $model->user_id = \Auth::user()->id;
+            $model->book_id = $log['book_id'];
+            $model->borrow_date =$log['borrow_date'];
+            $model->due_date =$log['due_date'];
+            if($model->save()){
+                $book = Books::find($log['book_id']);
+                $book->status ="borrowed";
+                if($book->save()){
+                    return \Redirect::route('booklist');}
+            } 
         }
 
     }

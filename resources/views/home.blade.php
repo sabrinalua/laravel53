@@ -8,11 +8,16 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in as a {{ Auth::user()-> type }}.
-                    </br>
                     <!-- You're {{$age}} this year ;> -->
+
+                    @if(Session::has('status'))
+                        <p style="color: red">{{Session::get('status')}}</p>           
+                    @endif
                     </br>
-                    You've borrowed {{$count}} book(s). <a href="/logs">View Logs</a>
+                    You've {{$count}} book(s) in your possession. <a href="/logs">View Borrow History</a>
+
+                    </br>
+                    You've borrowed a total of {{$count_ttl}} book(s).
                     
                 </div>
             </div>

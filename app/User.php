@@ -9,6 +9,8 @@ class User extends Authenticatable
 {
     use Notifiable;
     public $age;
+    public $total;
+    public $current;
 
     /**
      * The attributes that are mass assignable.
@@ -27,4 +29,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public function checkAge($dob){
+        $d = date("Y/m/d");
+        $dt = new \DateTime($d);
+        $dob = new \DateTime($dob);
+        $diff = $dt->diff($dob)->format('%y');
+        return $diff;
+    }
 }

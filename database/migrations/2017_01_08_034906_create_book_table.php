@@ -18,10 +18,12 @@ class CreateBookTable extends Migration
             $table->string('title');
             $table->string('isbn');
             $table->string('author');
+            $table->string('publisher')->default('unknown');
+            $table->integer('publish_year')->size(4)->nullable();
             $table->string('location');
             $table->string('added_by');
-            $table->string('description')->nullable();
-            $table->enum('status', ['available', 'borrowed', 'lost'])->default('available');
+            $table->text('description')->nullable();
+            $table->enum('status', ['available', 'borrowed', 'lost', 'deleted'])->default('available');
             $table->timestamps();
 
         });

@@ -32,7 +32,7 @@ Route::get('/', function () {
 
 //list books
 Route::get('/books/list', 'BookController@index')->name('booklist'); 
-Route::post('/books/list', 'BookController@index')->name('booklist'); 
+Route::post('/books/list', 'BookController@index'); 
 //view book by ID
 Route::get('/books/view/{id}', 'BookController@view')->name('/viewbook');
 
@@ -47,17 +47,20 @@ Route::group(['middleware'=>'App\Http\Middleware\VeriMidware'], function(){
 		Route::get('/books/create', 'BookController@showCreateForm');
 		Route::post('/books/create', 'BookController@create');
 		Route::get('/books/update/{id}', 'BookController@showEditForm');
-		Route::put('/books/update', 'BookController@update');
+		Route::post('/books/update', 'BookController@update');
 
 		//users
 		Route::get('/users/list', 'UserController@index')->name('userlist');
+		Route::post('/users/list', 'UserController@index');
 		Route::get('/users/view/{id}', 'UserController@view');
 		route::get('/users/update/{id}', 'UserController@showEditForm');
 		Route::put('/users/update', 'BookController@update');
 		Route::get('/users/create', 'UserController@showCreateForm');
 		Route::post('/users/create', 'UserController@create');
 
-		//
+		//logd
+		Route::get('/logs/list', 'LogController@index')->name('loglist');
+		Route::post('/logs/list', 'LogController@index');
 	});	
 	Route::get('/books/borrow/{id}','BookController@showBorrowForm');
 	Route::post('books/borrow', 'BookController@borrow');

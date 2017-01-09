@@ -65,11 +65,12 @@
                             </li>
                             @if(Auth::user()->type == 'librarian' )
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                            expanded="false">Users <span class="caret"></span></a>
+                            expanded="false">Administration <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="{{ url('/users/list') }}">View Users</a></li>
+                                    <li><a href="{{ url('/logs/list') }}">View Logs</a></li>
                                 </ul>
-                            </li>                            
+                            </li>                           
                             @endif
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -79,7 +80,7 @@
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
                                         <a href="/logs">View History</a>
-                                        <a href="/users/password">Change Password</a>
+                                        <a href="/password">Change Password</a>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

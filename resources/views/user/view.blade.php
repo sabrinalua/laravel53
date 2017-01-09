@@ -9,9 +9,17 @@
 		@endif
 		<table class="table table-stripped table-bordered">
 			<tbody>
+			<tr>
+					<th>Designation</th>
+					<td>{{$user->designation}}</td>
+				</tr>
 				<tr>
 					<th>Name</th>
-					<td>{{$user->name}}</td>
+					<td>{{$user->first_name}} {{$user->last_name}}</td>
+				</tr>
+				<tr>
+					<th>DOB</th>
+					<td>{{$user->dob}}</td>
 				</tr>
 				<tr>
 					<th>Email</th>

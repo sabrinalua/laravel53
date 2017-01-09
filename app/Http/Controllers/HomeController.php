@@ -18,14 +18,6 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    public function checkAge($dob){
-        $d = date("Y/m/d");
-        $dt = new \DateTime($d);
-        $dob = new \DateTime($dob);
-        $diff = $dt->diff($dob)->format('%y');
-        return $diff;
-    }
-
     /**
      * Show the application dashboard.
      *
@@ -33,11 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {  
+        $a =new \App\User();
+        
         $dob =\Auth::user()->dob;
-        $diff = $this->checkAge($dob);
-        $log = \App\Log::where(['user_id'=>\Auth::user()->id])->get();
-        $count = $log->count();        
-        return view('home', ['age'=>$diff, 'count'=>$count]);
+        $diff = $a->checkAge($dob);
+        $log = \App\Log::where(['user_id'=>\Auth::user()->id, 'returned'=>'0'])->get();
+        $count = $log->count();
+        $count_total =  \App\Log::where(['user_id'=>\Auth::user()->id])->get()->count();      
+        return view('home', ['age'=>$diff, 'count'=>$count, 'count_ttl'=>$count_total]);
     }
 
     public function addBook(){

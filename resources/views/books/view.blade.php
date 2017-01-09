@@ -18,7 +18,7 @@
 				</tr>
 				<tr>
 					<th>Author</th>
-					<td>{{$book->author}}}</td>
+					<td>{{$book->author}}</td>
 				</tr>
 				<tr>
 					<th>ISBN</th>
@@ -35,6 +35,15 @@
 				<tr>
 					<td>Location</td>
 					<td>{{$book->location}}</td>
+				</tr>
+				<tr>
+					<td>Year</td>
+					<td>{{$book->publish_year}}</td>
+				</tr>
+
+				<tr>
+					<td>Publisher</td>
+					<td>{{$book->publisher}}</td>
 				</tr>
 
 			</tbody>

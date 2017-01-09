@@ -14,16 +14,19 @@
 	<label>Author</label>
 	<input type="text" name="Book[author_fn]" id="author" class="form-control" placeholder="Initials" value="">
 	<input type="text" name="Book[author_ln]" id="author" class="form-control" placeholder="Last Name" value="">
+	<label>Description</label>
+	<textarea name="Book[description]" id="description" class="form-control" maxlength="800" rows="8"></textarea>
+	<label>Year Published</label>
+	<input type="number" name="Book[publish_year]" max="2100" min="0000" id="publish_year" class="form-control">
+	<label>Publisher</label>
+	<input type="text" name="Book[publisher]" id="publisher" class="form-control">
 	<label>Location</label>
-	<!-- <input type="text" name="Book[location]" id="location" class="form-control" required> -->
 	<select id ="location" class="form-control" name="Book[location]" value="{{ old('type') }}">
 	@foreach($sections as $s)
 	<option value="{{$s->section_code}}">{{$s->section_name}}</option>
 	@endforeach
 	</select>
-	<label>Description</label>
-	<input type="textArea" name="Book[description]" id="description" class="form-control" >
-	
+
 	</br>
 	<div>
 		<button type="submit" class="btn btn-success">Go</button>

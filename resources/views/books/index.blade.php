@@ -6,7 +6,7 @@
 			<form action="#" method="POST">
 			{{ csrf_field() }}
 			<input type="text" name="title" placeholder="book title" class="form-control">
-			<input type="text" name="author" placeholder="author" class="form-control">
+			<input type="text" name="author" placeholder="author" class="form-control" >
 			<input type="text" name="isbn" placeholder="isbn" class="form-control">
 			<select name="status" class="form-control">
 				<option value="">All</option>
@@ -14,7 +14,7 @@
 				<option value="available">available</option>
 				<option value="lost">lost</option>
 			</select>
-				<button>submit</button>
+				<button class="btn btn-success">submit</button>
 			</form>
 		</div>
 		</br>
@@ -25,6 +25,7 @@
 					<th>AUTHOR</th>
 					<th>ISBN</th>
 					<th>STATUS</th>
+					<th>LOCATION/SECTION</th>
 					<th></th>
 				</thead>
 				<tbody>
@@ -34,6 +35,7 @@
 						<td>{{$m->author}}</td>
 						<td>{{$m->isbn}}</td>
 						<td>{{$m->status}}</td>
+						<td>{{$m->location}}</td>
 						<td>
 							<a href="/books/view/{{$m->id}}"><span class="glyphicon glyphicon-eye-open"></span></a>
 							@if(Auth::user()->type=='librarian')

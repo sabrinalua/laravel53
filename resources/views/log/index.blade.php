@@ -1,22 +1,32 @@
 @extends('layouts.app')
 @section('content')
-
 <div class="container">
-	<h2>Borrow History</h2>
+
+	<div class="content">
+		<h6>Search</h6>
+		<form action="#" method="POST">
+			{{ csrf_field() }}
+			<input type="text" name="user_id" placeholder="borrower ID" class="form-control">
+			<input type="text" name="book_id" placeholder="book ID" class="form-control">
+			<input type="submit" name="Search" class="btn btn-success">
+		</form>
+	</div>
+	</br>
 	<table class="table table-stripped table-bordered">
 		<tr>
 			<thead>
 				<th>BOOK</th>
+				<th>BORROWER</th>
 				<th>BORROW DATE</th>
 				<th>DUE DATE</th>
 				<th>STATUS</th>
 				<th>FINES <br>(if applicable)</th>
-				<th>ACTION</th>
 			</thead>
 			<tbody>
-				@foreach($log as $l)
+				@foreach($logs as $l)
 				<tr data-key= "{{$l->id}}">
 					<td>{{$l->book_title}}</td>
+					<td>{{$l->borrower}}</td>
 					<td>{{$l->borrow_date}}</td>
 					<td>{{$l->due_date}}</td>
 					<td>
@@ -31,21 +41,11 @@
 					@endif
 					</td>
 					<td>{{ $l->fine }}</td>
-					<td>
-					@if(!$l->overdue)
-					<a href=""> return book</a>
-					@endif
-					@if($l->overdue)
-					<a href="" style="color:red"> return book / pay fines </a>
-					@endif
-					</td>
-					
 				</tr>
-				
 				@endforeach
 			</tbody>
 		</tr>
 	</table>
-<center>{!! $log->links() !!}</center>
+	<center>{!! $logs->links() !!}</center>
 </div>
 @stop
