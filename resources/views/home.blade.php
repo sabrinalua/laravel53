@@ -13,6 +13,10 @@
                     @if(Session::has('status'))
                         <p style="color: red">{{Session::get('status')}}</p>           
                     @endif
+
+                    @if($od)
+                    <p style="color: red">You have {{$od_count}} book(s) overdue, {{$ttl_fine}} bucks worth of fines in total</p>
+                    @endif
                     </br>
                     You've {{$count}} book(s) in your possession. <a href="/logs">View Borrow History</a>
 

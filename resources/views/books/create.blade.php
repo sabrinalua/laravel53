@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="container">
-<div class="jumbotron">
-	<center><h1>Insert Book</h1></center>
-</div>
+
+	<h1>Insert Book</h1>
+
 <form action="{{ url('/books/create') }}" method="POST">
 	{{ csrf_field() }}
 	<label>TITLE</label>
@@ -18,6 +18,8 @@
 	<textarea name="Book[description]" id="description" class="form-control" maxlength="800" rows="8"></textarea>
 	<label>Year Published</label>
 	<input type="number" name="Book[publish_year]" max="2100" min="0000" id="publish_year" class="form-control">
+	<label>Price</label>
+			<input type="number" name="Book[price]" class="form-control" required>
 	<label>Publisher</label>
 	<input type="text" name="Book[publisher]" id="publisher" class="form-control">
 	<label>Location</label>

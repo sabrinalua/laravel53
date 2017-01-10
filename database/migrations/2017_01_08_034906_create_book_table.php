@@ -20,6 +20,7 @@ class CreateBookTable extends Migration
             $table->string('author');
             $table->string('publisher')->default('unknown');
             $table->integer('publish_year')->size(4)->nullable();
+            $table->integer('price')->size(4)->default(25);
             $table->string('location');
             $table->string('added_by');
             $table->text('description')->nullable();

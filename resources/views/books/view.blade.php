@@ -5,7 +5,6 @@
 		<h1>{{$book->title}}</h1>
 		@if(Auth::user()->type=='librarian')
 		<a class="btn btn-primary" href="/books/update/{{$book->id}}">Update</a>
-		<a class="btn btn-danger" href="#">Delete</a>
 		@endif
 		@if($book->status == 'available')
 		<a class="btn btn-success" href="/books/borrow/{{$book->id}}">Borrow</a>
@@ -44,6 +43,11 @@
 				<tr>
 					<td>Publisher</td>
 					<td>{{$book->publisher}}</td>
+				</tr>
+
+				<tr>
+					<td>Price</td>
+					<td>{{$book->price}}</td>
 				</tr>
 
 			</tbody>

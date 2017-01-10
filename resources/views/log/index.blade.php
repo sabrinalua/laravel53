@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-
+<h1> Loan Logs</h1>
 	<div class="content">
 		<h6>Search</h6>
 		<form action="#" method="POST">
@@ -12,6 +12,9 @@
 		</form>
 	</div>
 	</br>
+	@if(Session::has('status'))
+    <p style="color: red">{{Session::get('status')}}</p>           
+    @endif
 	<table class="table table-stripped table-bordered">
 		<tr>
 			<thead>
@@ -21,6 +24,7 @@
 				<th>DUE DATE</th>
 				<th>STATUS</th>
 				<th>FINES <br>(if applicable)</th>
+				<th>ACTIONS</th>
 			</thead>
 			<tbody>
 				@foreach($logs as $l)
@@ -41,6 +45,14 @@
 					@endif
 					</td>
 					<td>{{ $l->fine }}</td>
+					<td>
+						@if(empty($l->return_date))
+						<a style ="color: red" href="/books/report/{{$l->id}}">report loss/<br> late payment</a><br>
+						@if(!$l->overdue)
+						<a href="/books/return/{{$l->id}}">return</a>
+						@endif
+						@endif				
+					</td>
 				</tr>
 				@endforeach
 			</tbody>

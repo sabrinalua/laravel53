@@ -2,6 +2,10 @@
 
 @section('content')
 <div class="container">
+
+    @if(Session::has('pw_success'))
+    <p style="color: red">{{Session::get('pw_success')}}</p>           
+    @endif
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">

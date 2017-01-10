@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
+<h1>Loan Book</h1>
 	<form method="POST" action="/books/borrow">
 	{{ csrf_field() }}
 		<label>BOOK TITLE</label>

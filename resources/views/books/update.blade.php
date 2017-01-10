@@ -10,7 +10,7 @@
 			<label>Publisher</label>
 			<input type="text" name="publisher" readonly value="{{$book->publisher}}" class="form-control">
 			<label>Year</label>
-			<input type="text" name="year" readonly value="{{$book->publish_year}}" class="form-control">
+			<input type="text" name="Book[year]" value="{{$book->publish_year}}" class="form-control">
 			<label>Description</label>
 			<textarea name="Book[description]" rows="8" class="form-control">{{$book->description}}</textarea>
 			<label>Genre</label>
@@ -19,8 +19,10 @@
 				<option value="{{$s->section_code}}" {{$book->location ==$s->section_code ? 'selected="selected"':''}}>{{$s->section_name}}</option>
 				@endforeach
 			</select>
-			</br>
+			<label>Price</label>
+			<input type="number" name="Book[price]" value="{{$book->price}}" class="form-control" required>
 			<input type="hidden" name="Book[id]" value="{{$book->id}}">
+			</br>
 			<input type="submit" class="btn btn-success" name="Submit">
 		</form>
 	</div>

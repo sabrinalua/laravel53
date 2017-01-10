@@ -34,7 +34,7 @@ class LogController extends Controller
     		$l->book_title = Books::find($l->book_id)->title;
     		$l->borrower = User::find($l->user_id)->name;
             $dd = new \DateTime($l->due_date);
-            $l->diff = $dd->diff($dt)->format('%r%d');
+            $l->diff = $dd->diff($dt)->format('%r%a');
             if($l->diff > 0){
                 $l->overdue = true;
                 $l->fine = ($l->diff)*2;

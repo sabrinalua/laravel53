@@ -33,10 +33,18 @@
 					<td>{{ $l->fine }}</td>
 					<td>
 					@if(!$l->overdue)
-					<a href=""> return book</a>
+						@if(empty($l->return_date))
+						<a href="/books/renew/{{$l->id}}">renew loan</a>
+						@endif
+						@if(empty($l->return_date))
+						<!-- <br>
+						<a style="color: red" href="">report loss</a> -->
+						@endif
 					@endif
 					@if($l->overdue)
-					<a href="" style="color:red"> return book / pay fines </a>
+					@if(empty($l->return_date))
+					<!-- <a href="" style="color:red"> return book/<br>pay fines </a> -->
+					@endif
 					@endif
 					</td>
 					

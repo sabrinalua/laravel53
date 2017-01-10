@@ -20,6 +20,7 @@ class CreateLogTable extends Migration
             $table->date('borrow_date')->nullable();
             $table->date('due_date')->nullable();
             $table->date('return_date')->nullable();
+            $table->string('comment')->nullable();
             $table->enum('returned', ['0','1'])->default('0');
         });
     }

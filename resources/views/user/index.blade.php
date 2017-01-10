@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 	<div class="container">
-
+	<h1>Users</h1>
 		<div>
 		<h5>Search</h5>
 		<form action="#" method="POST">

@@ -34,7 +34,7 @@ class AdminSeeder extends Seeder
             'designation'=>'Mr',
             'email' => "user@user.com",
             'password' => bcrypt('123456'),
-            'dob'=>'1998-09-09',
+            'dob'=>'2001-09-09',
             'type'=>'borrower',
             'contact'=>'12345',
             'address'=>'elm',
@@ -61,7 +61,29 @@ class AdminSeeder extends Seeder
             'location' =>'FICT02',
             'publisher'=>'Simon Pulse',
             'added_by' => '1',
+            'publish_year'=>'2000',
+            'description'=>'The Princess Diaries is a series of epistolary young adult novels written by Meg Cabot, and is also the title of the first volume, published in 2000.'
+            ]);
+
+        \App\Books::create([
+            'title'=>'The Princess Diaries 2',
+            'isbn'=>'0-380-81402-2',
+            'author'=>'Meg Cabot',
+            'location' =>'FICT02',
+            'publisher'=>'Simon Pulse',
+            'added_by' => '1',
             'publish_year'=>'2001',
+            'description'=>'The Princess Diaries is a series of epistolary young adult novels written by Meg Cabot, and is also the title of the first volume, published in 2000.'
+            ]);
+
+        \App\Books::create([
+            'title'=>'The Princess Diaries 3',
+            'isbn'=>'0-380-81402-3',
+            'author'=>'Meg Cabot',
+            'location' =>'FICT02',
+            'publisher'=>'Simon Pulse',
+            'added_by' => '1',
+            'publish_year'=>'2003',
             'description'=>'The Princess Diaries is a series of epistolary young adult novels written by Meg Cabot, and is also the title of the first volume, published in 2000.'
             ]);
 

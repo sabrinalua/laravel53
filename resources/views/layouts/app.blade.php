@@ -68,7 +68,9 @@
                             expanded="false">Administration <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="{{ url('/users/list') }}">View Users</a></li>
-                                    <li><a href="{{ url('/logs/list') }}">View Logs</a></li>
+                                    <li><a href="{{ url('/logs/list') }}">View All Loan Logs</a></li>
+                                    <li><a href="{{ url('/fines') }}">View Fines</a></li>
+                                    <li><a href="{{ url('/users/create') }}">Create User</a></li>
                                 </ul>
                             </li>                           
                             @endif
@@ -79,7 +81,7 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="/logs">View History</a>
+                                        <a href="/logs">View Indvidual History</a>
                                         <a href="/password">Change Password</a>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
@@ -103,6 +105,7 @@
     </div>
 
     <!-- Scripts -->
+    
     <script src="/js/app.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->

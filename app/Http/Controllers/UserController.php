@@ -36,16 +36,46 @@ class UserController extends Controller
     }
 
     public function view($id){
-    	$user = \App\User::find($id);
-    	return view('user.view', ['user'=>$user]);
+    	if($user = \App\User::find($id)){
+        	return view('user.view', ['user'=>$user]);
+        }else{
+            return \Redirect::route('error');
+        }
     }
 
+    public function showCreateForm(){
+        return view('user.create');
+    }
 
+    public function create(Request $r){
+        $post = $r['User'];
+        // var_dump(bcrypt('123456'));
+        $user= new \App\User();
+        $user->name = $post['name'];
+        $user->first_name = $post['first_name'];
+        $user->last_name = $post['last_name'];
+        $user->email=$post['email'];
+        $user->password=bcrypt('123456');
+        $user->dob = $post['dob'];
+        $user->designation=$post['designation'];
+        $user->contact = $post['contact'];
+        $user->address = $post['address'];
+        $user->type= $post['type'];
+        $user->status = "verified";
+        if($user->save()){
+            return \Redirect::route('/viewuser', ['id'=>$user->id]);
+        }
+    }
+     
 
     public function showEditForm($id){
-    	$user = \App\User::find($id);
-    	$roles = ['librarian'=>'Librarian', 'borrower'=>'Borrower'];
-    	// return view('user.form', ['roles'=>$roles, 'me'=>'borrower']);
-    	return view('user.form', ['roles'=>$roles, 'user'=>$user]);
+        if($user = \App\User::find($id)){
+            $roles = ['librarian'=>'Librarian', 'borrower'=>'Borrower'];
+            $designation = ['Ms','Mr','Mrs'];
+            // return view('user.form', ['roles'=>$roles, 'me'=>'borrower']);
+            return view('user.form', ['roles'=>$roles, 'user'=>$user, 'designation'=>$designation]);
+        }else{
+            return \Redirect::route('error');
+        }    	
     }
 }

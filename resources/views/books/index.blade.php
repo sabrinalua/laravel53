@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 	<div class="container">
+	<h1>Books</h1>
 		<h5>Search</h5>
 		<div id="searchdiv">
 			<form action="#" method="POST">
@@ -40,7 +41,6 @@
 							<a href="/books/view/{{$m->id}}"><span class="glyphicon glyphicon-eye-open"></span></a>
 							@if(Auth::user()->type=='librarian')
 							<a href="/books/update/{{$m->id}}"><span class="glyphicon glyphicon-pencil"></span></a> 
-							<a href="#"><span>delete</span></a>
 							@endif
 						</td>
 					</tr>
