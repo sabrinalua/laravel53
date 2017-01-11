@@ -159,6 +159,9 @@ class BookController extends Controller
         $book->location = $up['location'];
         $book->price = $up['price'];
         $book->publish_year = $up['year'];
+        if($up['found']=='available'){
+            $book->status = $up['found'];
+        }
         if($book->save()){
             return \Redirect::route('/viewbook', ['id'=>$up['id']]);
         }

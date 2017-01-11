@@ -21,6 +21,14 @@
 			</select>
 			<label>Price</label>
 			<input type="number" name="Book[price]" value="{{$book->price}}" class="form-control" required>
+			@if($book->status=='lost')
+			<label>Found?</label>
+			<SELECT class='form-control' name="Book[found]">
+				<option value="nope">Not Found</option>
+				<option value="available">Available</option>
+
+			</SELECT>
+			@endif
 			<input type="hidden" name="Book[id]" value="{{$book->id}}">
 			</br>
 			<input type="submit" class="btn btn-success" name="Submit">
