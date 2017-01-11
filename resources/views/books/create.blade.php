@@ -11,6 +11,7 @@
 	<input type="text" name="Book[title]" id="title" class="form-control" required>
 	<label>ISBN</label>
 	<input type="text" name="Book[isbn]" id="isbn" class="form-control" required>
+
 	<label>Author</label>
 	<input type="text" name="Book[author_fn]" id="author" class="form-control" placeholder="Initials" value="">
 	<input type="text" name="Book[author_ln]" id="author" class="form-control" placeholder="Last Name" value="">
@@ -22,12 +23,15 @@
 			<input type="number" name="Book[price]" class="form-control" required>
 	<label>Publisher</label>
 	<input type="text" name="Book[publisher]" id="publisher" class="form-control">
+	<label>Copies</label>
+	<input type="number" name="Book[copies]" id="copies" class="form-control" placeholder="minimum 1" required>
 	<label>Location</label>
 	<select id ="location" class="form-control" name="Book[location]" value="{{ old('type') }}">
 	@foreach($sections as $s)
 	<option value="{{$s->section_code}}">{{$s->section_name}}</option>
 	@endforeach
 	</select>
+
 
 	</br>
 	<div>

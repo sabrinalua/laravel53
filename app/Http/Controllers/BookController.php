@@ -26,21 +26,41 @@ class BookController extends Controller
     public function create(Request $request){
     	$added_by = \Auth::user()->name;
     	$book = $request['Book'];
-    	$model = new Books();
-    	$model->title = $book['title'];
-    	$model->isbn = $book['isbn'];
-    	$model->author = $book['author_fn']." ".$book['author_ln' ];
-    	$model->location = $book['location'];
-        $model->added_by = $added_by;
-        $model->publisher = $book['publisher'];
-        $model->publish_year = $book['publish_year'];
-        $model->description =$book['description'];
-        $model->price = $book['price'];
+        $number = (int)$book['copies'];
+        $num1 = $number+1;
+        $d =0;
+        for($i=0; $i<$number; $i++){
+            $model = new Books();
+            $model->title = $book['title'];
+            $model->isbn = $book['isbn'];
+            $model->author = $book['author_fn']." ".$book['author_ln' ];
+            $model->location = $book['location'];
+            $model->added_by = $added_by;
+            $model->publisher = $book['publisher'];
+            $model->publish_year = $book['publish_year'];
+            $model->description =$book['description'];
+            $model->price = $book['price'];
+            if($model->save()){
+                $d++;
+            }
+        }
+        
+    	// $model = new Books();
+    	// $model->title = $book['title'];
+    	// $model->isbn = $book['isbn'];
+    	// $model->author = $book['author_fn']." ".$book['author_ln' ];
+    	// $model->location = $book['location'];
+     //    $model->added_by = $added_by;
+     //    $model->publisher = $book['publisher'];
+     //    $model->publish_year = $book['publish_year'];
+     //    $model->description =$book['description'];
+     //    $model->price = $book['price'];
 
-    	if($model->save()){
-    		return \Redirect::route('/viewbook', ['id'=>$model->id]);
+    	if($d==$number){
+    		return \Redirect::route('booklist');
     	}else{
-    		return view('books.create'); 
+    		// return \Redirect::route('bookcreate');
+            return redirect()->action('BookController@showCreateForm');
     	}
     }
 

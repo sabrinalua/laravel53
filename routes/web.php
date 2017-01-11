@@ -44,7 +44,7 @@ Route::group(['middleware'=>'App\Http\Middleware\VeriMidware'], function(){
 	Route::group(['middleware' => 'App\Http\Middleware\LibMidWare'], function(){
 			
 		//books
-		Route::get('/books/create', 'BookController@showCreateForm');
+		Route::get('/books/create', 'BookController@showCreateForm')->name('bookcreate');
 		Route::post('/books/create', 'BookController@create');
 		Route::get('/books/update/{id}', 'BookController@showEditForm');
 		Route::post('/books/update', 'BookController@update');
